@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JM Manutenção | Obras e Serviços</title>
+  <meta name="description" content="JM Manutenção - serviços de obra, reformas, manutenção residencial e comercial com qualidade e segurança.">
+  <style>
+    :root {
+      --primaria: #414141;   /* cinza escuro da logo */
+      --secundaria: #c5b39d; /* bege da logo (cor de destaque) */
+      --claro: #f5f3f0;      /* fundo suave puxando pro bege */
+      --cinza: #6b6b6b;
+      --branco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--claro);
+      color: var(--primaria);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(19, 24, 31, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.4);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--branco);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #c5b39d, #c0a785);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #111827;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.3rem;
+      list-style: none;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    nav li a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secundaria);
+      transition: width 0.2s ease;
+    }
+
+    nav li a:hover::after {
+      width: 100%;
+    }
+
+    .btn-nav {
+      background: var(--secundaria);
+      color: #111827;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+      background: #d6c7b3;
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top left, rgba(197, 179, 157, 0.13), transparent 55%),
+                  radial-gradient(circle at bottom right, #222, #111);
+      color: var(--branco);
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      color: var(--secundaria);
+    }
+
+    .hero p {
+      color: #e5e7eb;
+      max-width: 490px;
+      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.18);
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--secundaria);
+      color: #111827;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary span {
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      background: #d6c7b3;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.5);
+      color: #e5e7eb;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: var(--secundaria);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(17, 24, 39, 0.75);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      margin-bottom: 0.9rem;
+      border: 1px solid rgba(249, 250, 251, 0.12);
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.2);
+    }
+
+    .hero-card {
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1.3rem;
+      border-radius: 1.2rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(249, 250, 251, 0.08);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    .hero-status {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.15);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+    }
+
+    .hero-checklist {
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.83rem;
+      color: #e5e7eb;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+
+    .hero-check-item span {
+      font-size: 1rem;
+      color: #22c55e;
+      margin-top: 1px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .metric {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 0.8rem;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      margin-bottom: 0.15rem;
+    }
+
+    .metric-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f9fafb;
+    }
+
+    .metric-sub {
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 0 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      text-align: center;
+      color: var(--primaria);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      text-align: center;
+      color: var(--cinza);
+      max-width: 520px;
+      margin: 0 auto 2.2rem;
+    }
+
+    /* Serviços */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--branco);
+      border-radius: 1rem;
+      padding: 1.4rem;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .service-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(197, 179, 157, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.4rem;
+      font-size: 1.2rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--cinza);
+      margin-bottom: 0.4rem;
+    }
+
+    .service-tagline {
+      font-size: 0.8rem;
+      color: #1c7c3d;
+      font-weight: 600;
+    }
+
+    /* Sobre */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      color: var(--cinza);
+      margin-bottom: 0.8rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+      color: var(--primaria);
+      margin-bottom: 0.35rem;
+    }
+
+    .about-list li span {
+      font-size: 1.1rem;
+      color: #22c55e;
+    }
+
+    .about-card {
+      background: var(--branco);
+      border-radius: 1rem;
+      padding: 1.3rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(135deg, rgba(197, 179, 157, 0.08), transparent);
+      pointer-events: none;
+    }
+
+    .about-highlight {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c5b39d;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .about-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-card p {
+      font-size: 0.9rem;
+      color: var(--cinza);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.6rem;
+    }
+
+    .about-stat {
+      flex: 1;
+    }
+
+    .about-stat strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    .about-stat span {
+      font-size: 0.8rem;
+      color: var(--cinza);
+    }
+
+    /* Projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      background: var(--branco);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+      color: var(--branco);
+      padding: 0.95rem 1rem;
+    }
+
+    .project-header h3 {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .project-location {
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .project-body {
+      padding: 0.9rem 1rem 1rem;
+      font-size: 0.9rem;
+      color: var(--cinza);
+      flex: 1;
+    }
+
+    .project-footer {
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--cinza);
+    }
+
+    /* Contato */
+    .contact-section {
+      background: #111;
+      color: var(--branco);
+      padding: 3rem 0 2.5rem;
+      margin-top: 1rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+    }
+
+    .contact-section .section-title,
+    .contact-section .section-subtitle {
+      color: var(--branco);
+    }
+
+    .contact-section .section-subtitle {
+      color: #cbd5f5;
+    }
+
+    .contact-card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 1rem;
+      padding: 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      margin-bottom: 1rem;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .contact-highlight {
+      font-weight: 600;
+    }
+
+    .contact-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+      color: #bbf7d0;
+    }
+
+    .contact-whatsapp span {
+      font-size: 1.2rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.15rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--branco);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--secundaria);
+      box-shadow: 0 0 0 1px rgba(197, 179, 157, 0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-helper {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.2rem;
+    }
+
+    .btn-form {
+      margin-top: 0.4rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    footer {
+      padding: 1.3rem 0 1rem;
+      background: #111;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* WhatsApp floating */
+    .float-whatsapp {
+      position: fixed;
+      right: 1.3rem;
+      bottom: 1.3rem;
+      z-index: 40;
+    }
+
+    .float-whatsapp a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: #22c55e;
+      color: #052e16;
+      font-size: 1.6rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .float-whatsapp a:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 2.6rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        padding-bottom: 2.3rem;
+      }
+
+      .hero-card {
+        margin-top: 0.4rem;
+      }
+
+      section {
+        padding: 2.3rem 0 2rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <div class="logo-icon">JM</div>
+          <div>
+            <div>JM Manutenção</div>
+            <small style="font-size: 0.7rem; color:#9ca3af;">Obras • Reformas • Manutenção</small>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+        <button class="btn-nav" onclick="scrollToSection('contato')">Solicitar Orçamento</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            Atendimento rápido em obras e manutenção
+          </div>
+          <h1>
+            Obras e <span>manutenção</span> com foco em segurança, prazo e resultado.
+          </h1>
+          <p>
+            A <strong>JM Manutenção</strong> executa serviços de obra, reforma e manutenção
+            residencial e comercial com equipe técnica experiente, materiais de qualidade e
+            compromisso total com o cliente.
+          </p>
+
+          <div class="hero-tags">
+            <div class="tag">Reformas completas</div>
+            <div class="tag">Manutenção elétrica e hidráulica</div>
+            <div class="tag">Acabamento e pintura</div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="openWhatsapp()">
+              <span>💬</span> Falar no WhatsApp
+            </button>
+            <button class="btn-ghost" onclick="scrollToSection('servicos')">
+              Ver todos os serviços →
+            </button>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-title">Checklist de obra segura</div>
+            <div class="hero-status">Em conformidade</div>
+          </div>
+          <div class="hero-checklist">
+            <div class="hero-check-item">
+              <span>✔</span>
+              <div>Visita técnica para entender o problema ou projeto antes de qualquer orçamento.</div>
+            </div>
+            <div class="hero-check-item">
+              <span>✔</span>
+              <div>Planejamento de prazo e materiais, evitando improviso e retrabalho.</div>
+            </div>
+            <div class="hero-check-item">
+              <span>✔</span>
+              <div>Execução com foco em segurança, limpeza e respeito ao ambiente do cliente.</div>
+            </div>
+            <div class="hero-check-item">
+              <span>✔</span>
+              <div>Entrega final revisada, com conferência ponto a ponto junto ao cliente.</div>
+            </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <div class="metric-label">Anos de experiência</div>
+              <div class="metric-value">+8</div>
+              <div class="metric-sub">em obras e manutenção</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Projetos entregues</div>
+              <div class="metric-value">+250</div>
+              <div class="metric-sub">entre residenciais e comerciais</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="section-title">Serviços JM Manutenção</h2>
+      <p class="section-subtitle">
+        Atendemos desde pequenos reparos até reformas completas, sempre com foco em qualidade,
+        transparência e segurança em cada etapa do serviço.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏗</div>
+          <h3>Reformas e Obras</h3>
+          <p>
+            Reforma de casas, apartamentos, salas comerciais e fachadas. Quebra, alvenaria, pisos,
+            revestimentos, gesso e acabamento fino.
+          </p>
+          <div class="service-tagline">Do projeto à entrega final.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💧</div>
+          <h3>Manutenção Hidráulica</h3>
+          <p>
+            Troca de tubulações, reparo de vazamentos, instalação de torneiras, registros, caixas
+            d’água, aquecedores e sistemas de água.
+          </p>
+          <div class="service-tagline">Resolvemos vazamentos sem dor de cabeça.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Elétrica Residencial e Comercial</h3>
+          <p>
+            Instalações e revisões elétricas, troca de padrão, quadro de distribuição, disjuntores,
+            iluminação, tomadas e pontos de energia.
+          </p>
+          <div class="service-tagline">Segurança em primeiro lugar.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>Pintura e Acabamento</h3>
+          <p>
+            Pintura interna e externa, textura, massa corrida, correção de paredes e detalhes de
+            acabamento que valorizam seu imóvel.
+          </p>
+          <div class="service-tagline">Visual renovado com padrão profissional.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🧰</div>
+          <h3>Manutenções Gerais</h3>
+          <p>
+            Ajustes em portas e janelas, troca de pisos e rodapés, reparos em muros, calçadas,
+            telhados e pequenos consertos em geral.
+          </p>
+          <div class="service-tagline">Ideal para o dia a dia do imóvel.</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📅</div>
+          <h3>Contrato de Manutenção</h3>
+          <p>
+            Planos periódicos para empresas, condomínios e comércios, garantindo o imóvel sempre em
+            dia e evitando paradas e emergências.
+          </p>
+          <div class="service-tagline">Prevenção que evita gastos maiores depois.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <h2 class="section-title">Sobre a JM Manutenção</h2>
+      <p class="section-subtitle">
+        Mais do que executar obra, nosso compromisso é entregar tranquilidade para o cliente,
+        com organização, respeito ao prazo e clareza em cada etapa.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            A <strong>JM Manutenção</strong> nasceu da necessidade de ter um serviço de obra e
+            manutenção em que o cliente realmente conseguisse confiar: prazos claros, orçamento
+            sem surpresas e cuidado com o ambiente de trabalho.
+          </p>
+          <p>
+            Atuamos em residências, apartamentos, salas comerciais, lojas e pequenas empresas.
+            Cada projeto é tratado de forma individual, entendendo a realidade do cliente e
+            o resultado que ele espera.
+          </p>
+
+          <ul class="about-list">
+            <li><span>✔</span> Atendimento transparente, com explicação de cada etapa do serviço.</li>
+            <li><span>✔</span> Equipe treinada, uso de EPIs e respeito às normas de segurança.</li>
+            <li><span>✔</span> Organização do ambiente, com cuidado para não deixar sujeira e entulho.</li>
+            <li><span>✔</span> Acompanhamento direto do responsável técnico até a finalização.</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <div class="about-highlight">Compromisso em cada detalhe</div>
+          <h3>O que você pode esperar ao contratar a JM</h3>
+          <p>
+            Antes de qualquer obra ou reparo, fazemos uma avaliação honesta. Se algo não for
+            necessário, será avisado. Se houver um risco, explicamos de forma direta e realista.
+          </p>
+          <p>
+            Queremos um relacionamento de longo prazo, em que você tenha alguém de confiança
+            para cuidar do seu imóvel sempre que precisar.
+          </p>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <strong>+95%</strong>
+              <span>dos clientes indicam nossos serviços</span>
+            </div>
+            <div class="about-stat">
+              <strong>Resposta rápida</strong>
+              <span>para orçamentos e emergências</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="container">
+      <h2 class="section-title">Alguns projetos entregues</h2>
+      <p class="section-subtitle">
+        Uma visão realista do tipo de trabalho que fazemos no dia a dia para clientes
+        residenciais e comerciais.
+      </p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Reforma de apartamento completo</h3>
+            <div class="project-location">Sala, cozinha e banheiros</div>
+          </div>
+          <div class="project-body">
+            Troca de piso, revisão total elétrica e hidráulica, pintura geral, iluminação planejada
+            e acabamento fino. Obra planejada para ser feita com o mínimo de interrupção
+            na rotina do cliente.
+          </div>
+          <div class="project-footer">
+            <span>Prazo: 45 dias</span>
+            <span>Tipo: Reforma completa</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Manutenção em loja comercial</h3>
+            <div class="project-location">Área de vendas e estoque</div>
+          </div>
+          <div class="project-body">
+            Revisão de pontos elétricos, reforço em iluminação, correção de infiltrações
+            e pintura rápida em horário combinado para não afetar o funcionamento da loja.
+          </div>
+          <div class="project-footer">
+            <span>Prazo: 3 dias</span>
+            <span>Tipo: Manutenção programada</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Reparo emergencial hidráulico</h3>
+            <div class="project-location">Residência térrea</div>
+          </div>
+          <div class="project-body">
+            Vazamento em tubulação interna, identificado e corrigido com o mínimo de quebra,
+            evitando danos maiores em piso e revestimento. Orientação ao cliente para prevenção.
+          </div>
+          <div class="project-footer">
+            <span>Prazo: Atendido no mesmo dia</span>
+            <span>Tipo: Emergencial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Solicite um orçamento</h2>
+      <p class="section-subtitle">
+        Envie uma mensagem com o tipo de serviço que você precisa. Respondemos com uma visão
+        realista de prazo, custo e o que de fato precisa ser feito.
+      </p>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-card">
+            <div class="contact-row">
+              <div class="contact-label">Contato direto</div>
+              <div class="contact-highlight">Telefone / WhatsApp:</div>
+              <div><strong>(00) 00000-0000</strong></div>
+              <div class="form-helper">
+                Coloque aqui o número real da JM Manutenção para o cliente clicar e chamar direto no WhatsApp.
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">Região de atendimento</div>
+              <div>Atendemos em <strong>sua cidade / região</strong> e proximidades. Ajuste este texto com a região real de atuação.</div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">Horário</div>
+              <div>Segunda a sexta, das 8h às 18h. Atendimento emergencial sob consulta.</div>
+            </div>
+
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="contact-whatsapp">
+              <span>🟢</span> Clique aqui para abrir o WhatsApp agora
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <form onsubmit="handleForm(event)">
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+            </div>
+            <div>
+              <label for="telefone">Telefone / WhatsApp</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required />
+            </div>
+            <div>
+              <label for="tipo">Tipo de serviço</label>
+              <input type="text" id="tipo" name="tipo" placeholder="Ex: reforma de banheiro, vazamento, pintura..." required />
+            </div>
+            <div>
+              <label for="mensagem">Detalhes do serviço</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Explique em poucas linhas o problema ou o projeto que você quer realizar." required></textarea>
+              <div class="form-helper">
+                Você pode integrar este formulário a um e-mail, WhatsApp ou sistema próprio de CRM depois.
+              </div>
+            </div>
+            <button type="submit" class="btn-primary btn-form">
+              Enviar pedido de orçamento
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="ano"></span> JM Manutenção. Todos os direitos reservados.</div>
+        <div>Site desenvolvido para divulgação de serviços de obras e manutenção.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <div class="float-whatsapp">
+    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" title="Falar com JM Manutenção no WhatsApp">
+      💬
+    </a>
+  </div>
+
+  <script>
+    // Ano automático no rodapé
+    document.getElementById("ano").textContent = new Date().getFullYear();
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.offsetTop - 70,
+        behavior: "smooth",
+      });
+    }
+
+    function openWhatsapp() {
+      // Troque pelo número real (DDD + número) no formato internacional
+      window.open("https://wa.me/5500000000000", "_blank");
+    }
+
+    function handleForm(event) {
+      event.preventDefault();
+      alert("Formulário enviado! Aqui você pode integrar com e-mail, WhatsApp ou sistema interno.");
+    }
+  </script>
+</body>
+</html>
